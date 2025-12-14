@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSS Animated Christmas Tree</title>
+
+  <style>
+    /* =========================================================
+       TEMEL YAPI
+    ========================================================= */
+    .yilbasi-agaci {
+      position: relative;
+      width: 280px;
+      margin: 50px auto;
+      padding-top: 50px;
+    }
+
+    /* =========================================================
+       GÖVDE
+    ========================================================= */
+    .agac-govde {
+      width: 30px;
+      height: 50px;
+      margin: 0 auto;
+      background-color: #5b3a29;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    /* =========================================================
+       YAPRAK KATMANLARI
+    ========================================================= */
+    .agac-katman {
+      position: relative;
+      width: 0;
+      height: 0;
+      margin: 0 auto;
+      border-left: 0 solid transparent;
+      border-right: 0 solid transparent;
+      overflow: visible;
+    }
+
+    .katman-1,
+    .katman-2,
+    .katman-3 {
+      box-shadow: inset 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .katman-1 {
+      border-left-width: 70px;
+      border-right-width: 70px;
+      border-bottom: 70px solid #27773a;
+      z-index: 3;
+    }
+
+    .katman-2 {
+      margin-top: -30px;
+      border-left-width: 90px;
+      border-right-width: 90px;
+      border-bottom: 90px solid #388e4e;
+      z-index: 2;
+    }
+
+    .katman-3 {
+      margin-top: -30px;
+      border-left-width: 110px;
+      border-right-width: 110px;
+      border-bottom: 110px solid #4caf50;
+      z-index: 1;
+    }
+
+    /* =========================================================
+       YILDIZ
+    ========================================================= */
+    @keyframes yildiz-parilti {
+      0%   { box-shadow: 0 0 10px 2px #ffe066; }
+      50%  { box-shadow: 0 0 35px 10px #ffffff; }
+      100% { box-shadow: 0 0 10px 2px #ffe066; }
+    }
+
+    .agac-yildiz {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      background-color: #ffeb3b;
+      transform: translateX(-50%);
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+      );
+      animation: yildiz-parilti 1.5s infinite alternate;
+      z-index: 4;
+    }
+
+    /* =========================================================
+       SÜSLER
+    ========================================================= */
+    @keyframes sus-yanip-sonme {
+      0%   { opacity: 1; transform: scale(1); }
+      50%  { opacity: 0.3; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .agac-susu::before,
+    .agac-susu::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      animation: sus-yanip-sonme 1s infinite alternate;
+      z-index: 5;
+    }
+
+    /* ---- Katman Bazlı Süsler ---- */
+    .katman-1.agac-susu::before {
+      background: #ffa500;
+      top: 65px;
+      left: 60px;
+    }
+
+    .katman-1.agac-susu::after {
+      background: #ff00ff;
+      top: 65px;
+      right: 60px;
+      animation-delay: 0.5s;
+    }
+
+    .katman-2.agac-susu::before {
+      background: #0000ff;
+      top: 85px;
+      left: 80px;
+      animation-delay: 0.2s;
+    }
+
+    .katman-2.agac-susu::after {
+      background: #ffff00;
+      top: 85px;
+      right: 80px;
+      animation-delay: 0.7s;
+    }
+
+    .katman-3.agac-susu::before {
+      background: #ff00ff;
+      top: 105px;
+      left: 105px;
+      animation-delay: 0.4s;
+    }
+
+    .katman-3.agac-susu::after {
+      background: #ffa500;
+      top: 105px;
+      right: 105px;
+      animation-delay: 0.9s;
+    }
+
+    /* =========================================================
+       ORTA (ÇAPRAZ) SÜSLER — BOX-SHADOW TEKNİĞİ
+    ========================================================= */
+    .katman-1.agac-susu::before {
+      animation-delay: 0.4s;
+      box-shadow:
+        0 0 0 #ff0000,
+        -80px -40px 0 #ff0000,
+        -60px -30px 0 #ff0000,
+        -40px -20px 0 #ff0000;
+    }
+
+    .katman-2.agac-susu::before {
+      animation-delay: 0.1s;
+      box-shadow:
+        0 0 0 #0000ff,
+        -65px -50px 0 #ff0000,
+        -90px -30px 0 #ff0000,
+        -120px -10px 0 #ff0000;
+    }
+
+    .katman-3.agac-susu::before {
+      animation-delay: 0.4s;
+      box-shadow:
+        0 0 0 #ff0000,
+        -140px -60px 0 #ff0000,
+        -100px -35px 0 #ff0000,
+        -60px -15px 0 #ff0000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="yilbasi-agaci">
+    <div class="agac-yildiz"></div>
+
+    <div class="agac-katman katman-1 agac-susu"></div>
+    <div class="agac-katman katman-2 agac-susu"></div>
+    <div class="agac-katman katman-3 agac-susu"></div>
+
+    <div class="agac-govde"></div>
+  </div>
+</body>
+</html>
