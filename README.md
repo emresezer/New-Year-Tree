@@ -8,7 +8,7 @@ Add a Christmas tree to your website as we enter 2026.
 
 The purpose of this project is to:
 
-- Demonstrate **CSS-based animation techniques**
+- Demonstrate **HTML animation techniques**
 - Create a festive **New Year tree visual**
 - Provide a clean and readable **front-end example project**
 - Serve as a lightweight decorative component for new year designs
