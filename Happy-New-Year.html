@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSS Animated Christmas Tree</title>
+
+  <style>
+    /* =========================================================
+       BASE STRUCTURE
+    ========================================================= */
+    .yilbasi-agaci {
+      position: relative;
+      width: 280px;
+      margin: 50px auto;
+      padding-top: 50px;
+    }
+
+    /* =========================================================
+       TREE TRUNK
+    ========================================================= */
+    .agac-govde {
+      width: 30px;
+      height: 50px;
+      margin: 0 auto;
+      background-color: #5b3a29;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    /* =========================================================
+       TREE LAYERS
+    ========================================================= */
+    .agac-katman {
+      position: relative;
+      width: 0;
+      height: 0;
+      margin: 0 auto;
+      border-left: 0 solid transparent;
+      border-right: 0 solid transparent;
+      overflow: visible;
+    }
+
+    .katman-1,
+    .katman-2,
+    .katman-3 {
+      box-shadow: inset 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .katman-1 {
+      border-left-width: 70px;
+      border-right-width: 70px;
+      border-bottom: 70px solid #27773a;
+      z-index: 3;
+    }
+
+    .katman-2 {
+      margin-top: -30px;
+      border-left-width: 90px;
+      border-right-width: 90px;
+      border-bottom: 90px solid #388e4e;
+      z-index: 2;
+    }
+
+    .katman-3 {
+      margin-top: -30px;
+      border-left-width: 110px;
+      border-right-width: 110px;
+      border-bottom: 110px solid #4caf50;
+      z-index: 1;
+    }
+
+    /* =========================================================
+       STAR
+    ========================================================= */
+    @keyframes yildiz-parilti {
+      0%   { box-shadow: 0 0 10px 2px #ffe066; }
+      50%  { box-shadow: 0 0 35px 10px #ffffff; }
+      100% { box-shadow: 0 0 10px 2px #ffe066; }
+    }
+
+    .agac-yildiz {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      background-color: #ffeb3b;
+      transform: translateX(-50%);
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+      );
+      animation: yildiz-parilti 1.5s infinite alternate;
+      z-index: 4;
+    }
+
+    /* =========================================================
+       DECORATIONS
+    ========================================================= */
+    @keyframes sus-yanip-sonme {
+      0%   { opacity: 1; transform: scale(1); }
+      50%  { opacity: 0.3; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
